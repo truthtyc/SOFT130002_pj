@@ -195,3 +195,289 @@ body {
 .footer_txt {
     color:whitesmoke;
 }
+.left_column {
+    float: left;
+    width: 30%;
+    text-align: center;
+    margin: 30px 10%;
+}
+.right_column {
+    float: right;
+    width: 30%;
+    margin: 30px 10%;
+    text-align: center;
+}
+.display_container:after{
+    content:"";
+    display: table;
+    clear: both;
+}
+
+.display_header {
+    margin-top: 60px;
+}
+
+.display_author {
+    font-family: Arial sans-serif;
+    font-style: italic;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.display_author:hover{
+    font-weight: bolder;
+}
+
+.button_add_into_collections {
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.button_add_into_collections:hover {
+    background-color: black;
+    cursor:pointer;
+}
+
+.sign_in, .sign_up {
+    width: 400px;
+    margin: 80px auto;
+    padding: 80px;
+    background-color: #dddddd;
+    border-radius: 15px;
+    text-align: center;
+}
+label {
+    color: #dddddd;
+    font-size: 17px;
+}
+#username, #password , #confirm_password{
+    width:300px;
+    height:30px;
+    border:none;
+    border-radius: 3px;
+    margin: 7px;
+}
+
+#sign_in_button , #sign_up_button{
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 7px;
+}
+
+#sign_up_entrance , #sign_in_entrance{
+    margin-top: 7px;
+    text-decoration: none;
+    font-family: Calibri, serif;
+    color: black;
+}
+
+#sign_up_entrance ,#sign_in_entrance:hover{
+    font-weight: bolder;
+}
+
+#sign_in_button, #sign_up_button:hover {
+    background-color: black;
+    cursor:pointer;
+}
+
+#left_search, #right_search {
+    float: left;
+    margin-top: 80px;
+}
+
+#left_search {
+    margin-left:10%;
+    margin-right:5%;
+    margin-bottom: 100px;
+    width:40%;
+    border-radius: 10px;
+    height:1000px;
+    background-color: aliceblue;
+}
+
+#main_search_bar {
+    width: 400px;
+    float: left;
+    padding: 6px 0 6px 6px;
+    border: none;
+    margin: 12px 0 20px 16px;
+    font-size: 17px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+#search_item_container {
+    height:900px;
+    width:100%;
+}
+
+.search_items {
+    height:180px;
+    width:100%;
+    margin:0;
+}
+.search_items:after {
+    content:"";
+    display: table;
+    clear:both;
+}
+
+.search_items_img{
+    height:140px;
+    width: 25%;
+    margin: 20px 10% 20px 5%;
+    float: left;
+}
+.search_items_img a img {
+    height: 140px;
+    width: auto;
+}
+.search_items_txt{
+    margin-left: 15%;
+    height: 180px;
+    width: 45%;
+    float: left;
+}
+
+.paging_container {
+    text-align: center;
+}
+
+.paging {
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.paging li {
+    display: inline;
+    text-align: center;
+}
+
+.paging a {
+    float: left;
+    display: block;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 5px 12px;
+    color: black;
+    margin-left: -1px;
+    border: 1px solid transparent;
+    line-height: 1.5;
+}
+.paging a.active {
+    cursor: default;
+}
+.paging a:active {
+    outline: none;
+}
+
+.node a {
+    margin-left: 3px;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    -moz-border-radius: 100%;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+}
+.node a:hover {
+    background-color: darkgray;
+}
+.node a.active, .node a:active {
+    background-color: darkgray;
+}
+#search_container:after {
+    content:"";
+    display: table;
+    clear: both;
+}
+#right_search {
+    width:30%;
+    margin-left: 5%;
+    margin-right: 10%;
+    height: 500px;
+    background-color: ivory;
+    border-radius: 10px;
+}
+#sorting_menu {
+    margin: 80px auto;
+    text-align: center;
+}
+#find_by_style, #find_by_artist, #find_by_name{
+    width:300px;
+    height:30px;
+    border:none;
+    border-radius: 3px;
+    margin: 7px;
+}
+
+#find{
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 7px;
+}
+#find:hover {
+    background-color: black;
+    cursor:pointer;
+}
+
+.dropdown_button {
+    background-color: lavender;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown_sorting {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown_sorting:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown_sorting:hover .dropdown_button {
+    background-color: plum;
+}
