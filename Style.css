@@ -42,8 +42,8 @@ nav li a {
 
 footer {
     text-align: center;
-    position: fixed;
-    bottom: 0;
+    float: bottom;
+    /*bottom: 0;*/
 }
 
 .login {
@@ -72,16 +72,20 @@ footer {
 #wrapper {
     width: 920px;
     margin: auto;
+    display: inline-block;
 }
 
 #img {
     width: 45%;
     float: left;
+    padding: 5%;
 }
 #img img {
     width: 100%;
 }
 #content {
-    width: 45%;
+    width: 40%;
     float: right;
+    /*padding: 5%;*/
+    padding-top: 5%;
 }
