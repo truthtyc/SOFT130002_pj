@@ -7,18 +7,25 @@
     <script type="text/javascript" src="Collections.js"></script>
     <script type="text/javascript" src="Footprint.js"></script>
 </head>
-<body>
+<body onload="setFootprint()">
 <div class="container">
     <!--navigation bar-->
     <div class="nav_bar">
-        <a id="logo" href="HomePage.html">Art Store</a>
-        <a id="slogan" href="HomePage.html">Where you find GENIUS and EXTRAORDINARY</a>
+        <a id="logo" href="HomePage.html" onclick="backPage()">Art Store</a>
+        <a id="slogan" href="HomePage.html" onclick="backPage()">Where you find GENIUS and EXTRAORDINARY</a>
         <label for="search"></label>
         <input class="search_bar" id="search" name="search" placeholder="Search......" autocomplete="off">
-        <a href="Search.html"><input class="button_search" id="go" name="go" type="button" value="GO"></a>
-        <a class="nav_bar_items" href="HomePage.html">Home</a>
-        <a class="nav_bar_items" href="SignIn.html">Sign In</a>
-        <a class="nav_bar_items" href="SignUp.html">Sign Up</a>
+        <a href="Search.html"><input class="button_search" id="go" onclick="backPage()" name="go" type="button"
+                                     value="GO"></a>
+        <a class="nav_bar_items" href="HomePage.html" onclick="backPage()">Home</a>
+        <a class="nav_bar_items" href="SignIn.html" onclick="backPage()">Sign In</a>
+        <a class="nav_bar_items" href="SignUp.html" onclick="backPage()">Sign Up</a>
+    </div>
+    <div class="footprint_container">
+        <a class="footprint">My Footprints: </a>
+        <a class="footprint" id="2footprint" onclick="backPage()" href=""></a>
+        <a class="footprint" id="1footprint" onclick="backPage()" href=""></a>
+        <a class="footprint" id="0footprint" onclick="backPage()" href=""></a>
     </div>
     <div id="collection_container">
         <!--user info column-->
