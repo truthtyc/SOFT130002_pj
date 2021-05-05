@@ -501,7 +501,6 @@ label {
     float: left;
     width: 50%;
     margin: 80px 5% 80px 5%;
-    height: 850px;
     background-color: lavender;
     border-radius: 10px;
 }
@@ -522,13 +521,19 @@ h2 , h1{
 }
 .collections {
     width: 100%;
-    height: 170px;
     margin: 5px auto;
+    float: left;
+}
+.collections:after {
+    content:"";
+    display: table;
+    clear: both;
 }
 .collection_img {
-    margin: 5px;
-    float: left;
-    width: 40%;
+    padding:5px;
+    width: 100%;
+    margin: 0;
+    text-align: center;
 }
 
 .collection_img img {
@@ -537,6 +542,25 @@ h2 , h1{
 }
 
 .collection_descriptions {
+    text-align: left;
+    width:60%;
+    margin: auto;
+}
+.collection_del {
+    width:100%;
     text-align: center;
-    padding: 15px;
+}
+.delete{
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+}
+.delete:hover {
+    background-color: black;
+    cursor:pointer;
 }

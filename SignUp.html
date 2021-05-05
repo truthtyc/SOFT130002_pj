@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Sign up</title>
     <link rel="stylesheet" type="text/css" href="NewStyle.css">
+    <script type="text/javascript" src="SignUp.js"></script>
+    <script type="text/javascript" src="Footprint.js"></script>
 </head>
 <body>
 <div class="container">
@@ -30,7 +32,7 @@
             <label for="confirm_password"></label>
             <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Your Password">
             <br/>
-            <input type="button" name="sign_up" id="sign_up_button" value="Sign Up here">
+            <input type="button" name="sign_up" id="sign_up_button" onclick="signUpCheck()" value="Sign Up here">
             <br/>
             <a id="sign_in_entrance" href="SignIn.html">Sign In</a>
         </form>
