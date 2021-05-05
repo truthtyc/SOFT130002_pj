@@ -514,7 +514,7 @@ label {
 #user_info_col {
     float: left;
     width: 35%;
-    margin: 80px 0 80px 5%;
+    margin: 120px 0 80px 5%;
     height: 600px;
     background-color: aliceblue;
     border-radius: 10px;
@@ -523,7 +523,7 @@ label {
 #collection_col {
     float: left;
     width: 50%;
-    margin: 80px 5% 80px 5%;
+    margin: 120px 5% 80px 5%;
     background-color: lavender;
     border-radius: 10px;
 }
