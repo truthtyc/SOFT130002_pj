@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Art Store</title>
+    <script src="./resources/js/jquery.js"></script>
+    <script src="./resources/js/vue.js"></script>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="./css/searchpage.css" />
+  </head>
+  <body>
+    <div id="app">
+      <el-container>
+        <!-- header -->
+        <el-header> Header </el-header>
+        <el-container>
+          <el-main>main</el-main>
+          <el-aside width="33.33%">right</el-aside>
+        </el-container>
+        <!-- footer -->
+        <el-footer>footer</el-footer>
+      </el-container>
+    </div>
+    <script>
+      new Vue().$mount("#app");
+    </script>
+  </body>
+</html>
