@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>Art Store</title>
-    <script src="./resources/js/jquery.js"></script>
-    <script src="./resources/js/vue.js"></script>
+    <script src="../resources/js/jquery.js"></script>
+    <script src="../resources/js/vue.js"></script>
     <!-- 引入样式 -->
     <link
       rel="stylesheet"
@@ -13,39 +13,69 @@
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="../NewStyle.css" />
   </head>
   <body>
     <div id="app">
+      <!-- header -->
+      <div class="nav_bar">
+        <a id="logo" href="HomePage.html">Art Store</a>
+        <a id="slogan" href="HomePage.html"
+          >Where you find GENIUS and EXTRAORDINARY</a
+        >
+        <label for="search"></label>
+        <input
+          class="search_bar"
+          id="search"
+          name="search"
+          placeholder="Search......"
+          autocomplete="off"
+        />
+        <a href="searchpage.html"
+          ><input
+            class="button_search"
+            id="go"
+            name="go"
+            type="button"
+            value="GO"
+        /></a>
+        <a class="nav_bar_items" href="home.html">Home</a>
+        <a class="nav_bar_items" href="login.html">Sign In</a>
+        <a class="nav_bar_items" href="register.html">Sign Up</a>
+      </div>
       <el-container>
-        <!-- header -->
-        <el-header>
-          <el-row>
-            <el-col :span="6"
-              ><div class="grid-content bg-purple"></div
-            ></el-col>
-            <el-col :span="6"
-              ><div class="grid-content bg-purple-light"></div
-            ></el-col>
-            <el-col :span="6"
-              ><div class="grid-content bg-purple"></div
-            ></el-col>
-            <el-col :span="6"
-              ><div class="grid-content bg-purple-light"></div
-            ></el-col>
-          </el-row>
-        </el-header>
-
+        <div id="lead_picture_container">
+          <div id="lead_pictures">
+            <a href="Display.html"
+              ><img src="resources/img/410.jpg" alt=""
+            /></a>
+            <a href="Display.html"
+              ><img src="resources/img/392.jpg" alt=""
+            /></a>
+            <a href="Display.html"
+              ><img src="resources/img/377.jpg" alt=""
+            /></a>
+          </div>
+        </div>
+      </el-container>
+      <el-container>
         <!-- most viewed -->
-        <el-main> most viewed </el-main>
+        <el-header>
+          <div class="header">
+            <hr />
+            <p>See What's new</p>
+          </div>
+        </el-header>
         <el-container>
           <el-aside width="33.33%">left</el-aside>
           <el-aside width="33.33%">middle</el-aside>
           <el-aside width="33.33%">right</el-aside>
         </el-container>
-
-        <!-- footer -->
-        <el-footer>footer</el-footer>
       </el-container>
+      <!-- footer -->
+    </div>
+    <div class="footer">
+      <p class="footer_txt">Maintained by Yuchen Tong. All rights reserved.</p>
     </div>
     <script>
       new Vue().$mount("#app");

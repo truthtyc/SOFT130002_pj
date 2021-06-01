@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Display</title>
+    <link rel="stylesheet" type="text/css" href="NewStyle.css"/>
+    <script type="text/javascript" src="Footprint.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--navigation bar-->
+    <div class="nav_bar">
+        <a id="logo" href="HomePage.php">Art Store</a>
+        <a id="slogan" href="HomePage.php"
+        >Where you find GENIUS and EXTRAORDINARY</a
+        >
+        <label for="search"></label>
+        <input
+                class="search_bar"
+                id="search"
+                name="search"
+                placeholder="Search......"
+                autocomplete="off"
+        />
+        <a href="Search.php"
+        ><input
+                class="button_search"
+                id="go"
+                name="go"
+                type="button"
+                value="GO"
+        /></a>
+        <a class="nav_bar_items" href="HomePage.php">Home</a>
+        <a class="nav_bar_items" href="SignIn.php">Sign In</a>
+        <a class="nav_bar_items" href="SignUp.php">Sign Up</a>
+    </div>
+    <!--display-->
+    <div class="display_container">
+        <div class="display_header">
+            <p class="name">Woman With Hat</p>
+            <a href="Search.php" class="display_author"><p>Henri Matisse</p></a>
+        </div>
+        <div class="left_column">
+            <img id="display_img" src="resources/img/177.jpg" alt=""/>
+        </div>
+        <div class="right_column">
+            <p>Time: 1905</p>
+            <p>Size:</p>
+            <p>Age:</p>
+            <p>Style:</p>
+            <p class="description">
+                Woman with a Hat (La femme au chapeau) is a painting by Henri
+                Matisse from 1905. <br/>It is believed that the woman in the
+                painting was Matisse's wife, Amelie. <br/>It was exhibited with the
+                work of other artists, now known as "Fauves" at the 1905 Salon
+                d'Automne. <br/>Critic Louis Vauxcelles described the work with the
+                phrase "Donatello au milieu des fauves!" (Donatello among the wild
+                beasts), referring to a Renaissance-type sculpture that shared the
+                room with them. His comment was printed on 17 October 1905 in Gil
+                Blas, a daily newspaper, and passed into popular usage. <br/>The
+                pictures gained considerable condemnation, such as "A pot of paint
+                has been flung in the face of the public" from the critic Camille
+                Mauclair, but also some favorable attention. The painting that was
+                singled out for attacks was Matisse's Woman with a Hat, which was
+                bought by Gertrude and Leo Stein: this had a very positive effect on
+                Matisse, who was suffering demoralisation from the bad reception of
+                his work.
+            </p>
+            <p>Heat:</p>
+            <p>Price:</p>
+            <input
+                    class="button_add_into_collections"
+                    id="add_into_collections"
+                    name="add_into_collections"
+                    type="button"
+                    onclick="alert('ADDED TO COLLECTIONS!')"
+                    value="ADD INTO COLLECTIONS"
+            />
+        </div>
+    </div>
+    <!--footer-->
+    <div class="footer">
+        <p class="footer_txt">
+            Maintained by Yuchen Tong. All rights reserved.
+        </p>
+    </div>
+</div>
+</body>
+</html>
