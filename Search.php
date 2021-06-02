@@ -5,31 +5,33 @@
     <title>Search Results</title>
     <link rel="stylesheet" type="text/css" href="NewStyle.css"/>
     <script type="text/javascript" src="Footprint.js"></script>
+    <?php
+    require "DatabaseConfig.php";
+    $conn = connectDatabase();
+    $search = $_GET['search'];
+    $sql = "select * from artworks where artist like " . "'%" . $search . "%'" .
+        " or title like " . "'%" . $search . "%'" .
+        " or description like " . "'%" . $search . "%'" .
+        " or artist like '" . $search . "%'" .
+        " or title like '" . $search . "%'" .
+        " or description like '" . $search . "%'" .
+        " or artist like '" . "%" . $search .
+        "' or title like '" . "%" . $search .
+        "' or description like '" . "%" . $search . "'";
+    $result = $conn->query($sql);
+    ?>
 </head>
 <body>
 <div class="container">
-    <!--navigation bar-->
+    navigation bar
     <div class="nav_bar">
         <a id="logo" href="HomePage.php">Art Store</a>
-        <a id="slogan" href="HomePage.php"
-        >Where you find GENIUS and EXTRAORDINARY</a
-        >
-        <label for="search"></label>
-        <input
-                class="search_bar"
-                id="search"
-                name="search"
-                placeholder="Search......"
-                autocomplete="off"
-        />
-        <a href="Search.php"
-        ><input
-                class="button_search"
-                id="go"
-                name="go"
-                type="button"
-                value="GO"
-        /></a>
+        <a id="slogan" href="HomePage.php">Where you find GENIUS and EXTRAORDINARY</a>
+        <form action="Search.php" method="get">
+            <input class="search_bar" id="search" name="search" placeholder="Search......" type="text"
+                   autocomplete="off"/>
+            <input class="button_search" id="go" type="submit" value="GO"/>
+        </form>
         <a class="nav_bar_items" href="HomePage.php">Home</a>
         <a class="nav_bar_items" href="SignIn.php">Sign In</a>
         <a class="nav_bar_items" href="SignUp.php">Sign Up</a>
@@ -38,84 +40,33 @@
         <div id="left_search">
             <!--search bar-->
             <div id="main_search_bar_container">
-                <label for="main_search_bar"></label>
-                <input
-                        id="main_search_bar"
-                        name="search"
-                        placeholder="Search......"
-                        autocomplete="off"
-                />
-                <a href="Search.php"
-                ><input
-                        class="button_search"
-                        id="go_search"
-                        name="go"
-                        type="button"
-                        value="GO"
-                /></a>
+                <form action="Search.php" method="get">
+                    <input id="main_search_bar" name="search" placeholder="Search......" autocomplete="off"
+                           type="text"/>
+                    <input class="button_search" id="go_search" name="go" type="submit" value="GO"/>
+                </form>
             </div>
             <!--search items-->
             <div id="search_item_container">
-                <div class="search_items">
-                    <div class="search_items_img">
-                        <a href="Display.php"
-                        ><img src="resources/img/39.jpg" alt=""
-                        /></a>
-                    </div>
-                    <div class="search_items_txt">
-                        <p>Name:</p>
-                        <p>Artist:</p>
-                        <p>Description:</p>
-                    </div>
-                </div>
-                <div class="search_items">
-                    <div class="search_items_img">
-                        <a href="Display.php"
-                        ><img src="resources/img/410.jpg" alt=""
-                        /></a>
-                    </div>
-                    <div class="search_items_txt">
-                        <p>Name:</p>
-                        <p>Artist:</p>
-                        <p>Description:</p>
-                    </div>
-                </div>
-                <div class="search_items">
-                    <div class="search_items_img">
-                        <a href="Display.php"
-                        ><img src="resources/img/47.jpg" alt=""
-                        /></a>
-                    </div>
-                    <div class="search_items_txt">
-                        <p>Name:</p>
-                        <p>Artist:</p>
-                        <p>Description:</p>
-                    </div>
-                </div>
-                <div class="search_items">
-                    <div class="search_items_img">
-                        <a href="Display.php"
-                        ><img src="resources/img/154.jpg" alt=""
-                        /></a>
-                    </div>
-                    <div class="search_items_txt">
-                        <p>Name:</p>
-                        <p>Artist:</p>
-                        <p>Description:</p>
-                    </div>
-                </div>
-                <div class="search_items">
-                    <div class="search_items_img">
-                        <a href="Display.php"
-                        ><img src="resources/img/68.jpg" alt=""
-                        /></a>
-                    </div>
-                    <div class="search_items_txt">
-                        <p>Name:</p>
-                        <p>Artist:</p>
-                        <p>Description:</p>
-                    </div>
-                </div>
+                <?php
+                for ($i = 0; $i < 5; $i++) {
+                    $row = $result->fetch_assoc();
+                    if (!$row) break;
+                    echo "<div class='search_items'>";
+                    echo "<div class='search_items_img'>";
+                    ?>
+                    <a href="<?php echo 'Display.php?value=' . $row['artworkID'] ?>"><img
+                                src='resources/img/<?php echo $row['imageFileName'] ?>' alt=''/></a>
+                    <?php
+                    echo "</div>";
+                    echo "<div class='search_items_txt'>";
+                    echo "<p> Name: {$row['title']}</p>";
+                    echo "<p> Artist: {$row['artist']}</p>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+                $conn->close();
+                ?>
             </div>
             <!--paging-->
             <div class="paging_container">
@@ -169,8 +120,7 @@
                     <button class="dropdown_button">SORT</button>
                     <div class="dropdown-content">
                         <a href="#">Sort by Price</a>
-                        <a href="#">Sort by Heat</a>
-                        <a href="#">SOrt by Age</a>
+                        <a href="#">Sort by View</a>
                     </div>
                 </div>
             </div>
