@@ -11,9 +11,7 @@
     <!--navigation bar-->
     <div class="nav_bar">
         <a id="logo" href="HomePage.php">Art Store</a>
-        <a id="slogan" href="HomePage.php"
-        >Where you find GENIUS and EXTRAORDINARY</a
-        >
+        <a id="slogan" href="HomePage.php">Where you find GENIUS and EXTRAORDINARY</a>
         <label for="search"></label>
         <input
                 class="search_bar"
@@ -24,12 +22,12 @@
         />
         <a href="Search.php"
         ><input
-                class="button_search"
-                id="go"
-                name="go"
-                type="button"
-                value="GO"
-        /></a>
+                    class="button_search"
+                    id="go"
+                    name="go"
+                    type="button"
+                    value="GO"
+            /></a>
         <a class="nav_bar_items" href="HomePage.php">Home</a>
         <a class="nav_bar_items" href="SignIn.php">Sign In</a>
         <a class="nav_bar_items" href="SignUp.php">Sign Up</a>
@@ -37,9 +35,20 @@
     <!--Leading pictures-->
     <div id="lead_picture_container">
         <div id="lead_pictures">
-            <a href="Display.php"><img src="resources/img/410.jpg" alt=""/></a>
-            <a href="Display.php"><img src="resources/img/392.jpg" alt=""/></a>
-            <a href="Display.php"><img src="resources/img/377.jpg" alt=""/></a>
+            <?php
+            require "DatabaseConfig.php";
+            $conn = connectDatabase();
+            $sql = "select * from artworks order by view desc;";
+            $result = $conn->query($sql);
+
+            for ($i = 1; $i <= 3; $i++) {
+                $row = $result->fetch_assoc();
+                ?>
+                <a href="<?php echo 'Display.php?value=' . $row['artworkID'] ?>"><img
+                            src='resources/img/<?php echo $row['imageFileName'] ?>' alt=''/></a>
+                <?php
+            }
+            ?>
         </div>
     </div>
     <!--most viewed pictures-->
@@ -48,41 +57,26 @@
             <hr/>
             <p>Most Viewed</p>
         </div>
-        <div class="column">
-            <a href="Display.php"><img src="resources/img/32.jpg" alt=""/></a>
-            <p class="name">The Dream</p>
-            <p class="author">Pablo Picasso</p>
-            <p class="description">
-                This painting depicts Marie-Thérèse Walter (July 13, 1909 – October
-                20, 1977) who was the French mistress and model of Pablo Picasso
-                from 1927 to about 1935, and the mother of his daughter, Maya
-                Widmaier-Picasso...
-            </p>
-            <a href="Display.php" class="see_details">SEE DETAILS</a>
-        </div>
-        <div class="column">
-            <a href="Display.php"><img src="resources/img/62.jpg" alt=""/></a>
-            <p class="name">Sidewalk Café at Night</p>
-            <p class="author">Vincent Van Gogh</p>
-            <p class="description">
-                Café Terrace at Night, also known as The Cafe Terrace on the Place
-                du Forum, is an coloured oil painting on an industrially primed
-                canvas of size 25 (Toile de 25 figure) in Arles, France, mid
-                September 1888...
-            </p>
-            <a href="Display.php" class="see_details">SEE DETAILS</a>
-        </div>
-        <div class="column">
-            <a href="Display.php"><img src="resources/img/177.jpg" alt=""/></a>
-            <p class="name">Woman With Hat</p>
-            <p class="author">Henri Matisse</p>
-            <p class="description">
-                Woman with a Hat, (La femme au chapeau) is a painting by Henri
-                Matisse from 1905. It is believed that the woman in the painting was
-                Matisse's wife, Amelie...
-            </p>
-            <a href="Display.php" class="see_details">SEE DETAILS</a>
-        </div>
+        <?php
+        $sql = "select * from artworks order by timeReleased desc;";
+        $result = $conn->query($sql);
+
+        for ($i = 1; $i <= 3; $i++) {
+            $row = $result->fetch_assoc();
+            echo "<div class='column'>";
+            ?>
+            <a href="<?php echo 'Display.php?value=' . $row['artworkID'] ?>"><img src='resources/img/<?php echo $row['imageFileName'] ?>' alt=''/></a>
+            <?php
+            echo "<p class='name'>{$row['title']}</p>";
+            echo "<p class='author'>{$row['artist']}</p>";
+            echo "<p class='description'>{$row['description']}</p>";
+            ?>
+            <a href="<?php echo 'Display.php?value=' . $row['artworkID'] ?>" class='see_details'>SEE DETAILS</a>
+            <?php
+            echo "</div>";
+        }
+        $conn->close();
+        ?>
     </div>
     <!--footer-->
     <div class="footer">

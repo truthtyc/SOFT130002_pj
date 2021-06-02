@@ -62,6 +62,30 @@
                     placeholder="Confirm Your Password"
             />
             <br/>
+            <label for="email"></label>
+            <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    placeholder="Your E-mail"
+            />
+            <br/>
+            <label for="tel"></label>
+            <input
+                    type="text"
+                    name="tel"
+                    id="tel"
+                    placeholder="Your telephone number"
+            />
+            <br/>
+            <label for="address"></label>
+            <input
+                    type="text"
+                    name="address"
+                    id="address"
+                    placeholder="Your address"
+            />
+            <br/>
             <input
                     type="button"
                     name="sign_up"

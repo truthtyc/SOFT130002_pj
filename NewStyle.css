@@ -266,7 +266,7 @@ label {
     font-size: 17px;
 }
 
-#username, #password, #confirm_password {
+#username, #password, #confirm_password, #email, #tel, #address {
     width: 300px;
     height: 30px;
     border: none;
@@ -545,6 +545,7 @@ h2, h1 {
 
 .info {
     text-align: center;
+    font-family: "Microsoft JhengHei UI", sans-serif;
 }
 
 .collections {
@@ -571,10 +572,25 @@ h2, h1 {
     height: 160px;
 }
 
+
 .collection_descriptions {
-    text-align: left;
-    width: 60%;
-    margin: auto;
+    font-family: "Microsoft JhengHei UI", sans-serif;
+    font-size: small;
+    text-align: center;
+
+}
+.collection_descriptions_title {
+    text-decoration: none;
+    color: black;
+}
+.collection_descriptions_date {
+    font-size: small;
+    text-align: center;
+    color: black;
+}
+
+.collection_descriptions_title:hover {
+    font-weight: bolder;
 }
 
 .collection_del {
