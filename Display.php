@@ -5,6 +5,7 @@
     <title>Display</title>
     <link rel="stylesheet" type="text/css" href="NewStyle.css"/>
     <script type="text/javascript" src="Footprint.js"></script>
+    <script type="text/javascript" src="SearchService.js"></script>
     <?php
     require "DatabaseConfig.php";
     $conn = connectDatabase();
@@ -37,11 +38,10 @@
     <div class="nav_bar">
         <a id="logo" href="HomePage.php">Art Store</a>
         <a id="slogan" href="HomePage.php">Where you find GENIUS and EXTRAORDINARY</a>
-        <form action="Search.php" method="get">
-            <input class="search_bar" id="search" name="search" placeholder="Search......" type="text"
-                   autocomplete="off"/>
-            <input class="button_search" id="go" type="submit" value="GO"/>
-        </form>
+        <label for="search"></label>
+        <input class="search_bar" id="search" name="search" placeholder="Search......" type="text"
+               autocomplete="off"/>
+        <input class="button_search" id="go" type="button" value="GO" onclick="searchService()"/>
         <a class="nav_bar_items" href="HomePage.php">Home</a>
         <a class="nav_bar_items" href="SignIn.php">Sign In</a>
         <a class="nav_bar_items" href="SignUp.php">Sign Up</a>
