@@ -23,7 +23,7 @@
 <body>
 <script>
     function addIntoWishlist(id) {
-        xmlhttp = new XMLHttpRequest();
+        let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                 alert(xmlhttp.responseText);
@@ -76,6 +76,8 @@
                     value="ADD INTO WISHLIST"
             />
             <?php
+            mysqli_free_result($oldRow);
+            mysqli_free_result($row);
             $conn->close();
             ?>
         </div>

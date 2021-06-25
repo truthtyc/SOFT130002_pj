@@ -68,6 +68,8 @@
                 </div>
                 <?php
             }
+            mysqli_free_result($row);
+            $conn->close();
             ?>
         </div>
     </div>

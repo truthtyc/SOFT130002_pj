@@ -11,29 +11,56 @@
     $conn = connectDatabase();
     $search = $_GET['search'];
     $sort = $_GET['sort'];
-    $sql = "select * from artworks where artist like " . "'%" . $search . "%'" .
-        " or title like " . "'%" . $search . "%'" .
-        " or description like " . "'%" . $search . "%'" .
-        " or artist like '" . $search . "%'" .
-        " or title like '" . $search . "%'" .
-        " or description like '" . $search . "%'" .
-        " or artist like '" . "%" . $search .
-        "' or title like '" . "%" . $search .
-        "' or description like '" . "%" . $search . "'";
+    if ($search == "")
+        $sql = "select * from artworks";
+    else
+        $sql = "select * from artworks where artist like " . "'%" . $search . "%'" .
+            " or title like " . "'%" . $search . "%'" .
+            " or description like " . "'%" . $search . "%'" .
+            " or artist like '" . $search . "%'" .
+            " or title like '" . $search . "%'" .
+            " or description like '" . $search . "%'" .
+            " or artist like '" . "%" . $search .
+            "' or title like '" . "%" . $search .
+            "' or description like '" . "%" . $search . "'";
     $result = null;
     if ($sort == '') {
         $result = $conn->query($sql);
     } else if ($sort == 'sortByPrice') {
-        $newSql = $sql .
+        $sql = $sql .
             " order by price desc";
-        echo $newSql;
-        $result = $conn->query($newSql);
+        echo $sql;
+        $result = $conn->query($sql);
     } else if ($sort == 'sortByView') {
-        $newSql = $sql .
+        $sql = $sql .
             " order by view desc";
-        echo $newSql;
-        $result = $conn->query($newSql);
+        echo $sql;
+        $result = $conn->query($sql);
     }
+
+    if ($result)
+        $totalCount = $result->num_rows;
+    else
+        $totalCount = 0;
+
+    $pageSize = 5;
+    $totalPage = (int)(($totalCount % $pageSize == 0) ? ($totalCount / $pageSize) : ($totalCount / $pageSize + 1));
+
+    if (!isset($_GET['page']))
+        $currentPage = 1;
+    else
+        $currentPage = $_GET['page'];
+
+    $mark = ($currentPage - 1) * $pageSize;
+    $firstPage = 1;
+    $lastPage = $totalPage;
+    $prePage = ($currentPage > 1) ? $currentPage - 1 : 1;
+    $nextPage = ($totalPage - $currentPage > 0) ? $currentPage + 1 : $totalPage;
+
+    $pageSql = $sql . ' limit ' . $mark . ' , ' . $pageSize;
+    echo $pageSql;
+    $result = $conn->query($pageSql)
+
     ?>
 </head>
 <body>
@@ -63,7 +90,7 @@
             <!--search items-->
             <div id="search_item_container">
                 <?php
-                for ($i = 0; $i < 5; $i++) {
+                for ($i = 0; $i < $pageSize; $i++) {
                     $row = $result->fetch_assoc();
                     if (!$row) break;
                     echo "<div class='search_items'>";
@@ -87,17 +114,13 @@
             <!--paging-->
             <div class="paging_container">
                 <ul class="paging node">
-                    <li><a href="#" class="prev">&laquo;</a></li>
-                    <li><a href="#" class="active">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
-                    <li><a href="#">7</a></li>
-                    <li><a href="#">8</a></li>
-                    <li><a href="#">9</a></li>
-                    <li><a href="#" class="next">&raquo;</a></li>
+                    <?php
+                    echo "<li><a href='Search.php?search=$search&sort=$sort&page=1'>&laquo;</a></li>";
+                    for ($i = 1; $i <= 10; $i++) {
+                        echo "<li><a href='Search.php?search=$search&sort=$sort&page=$i'>$i</a></li>";
+                    }
+                    echo "<li><a href='Search.php?search=$search&sort=$sort&page=$totalPage'>&raquo;</a></li>";
+                    ?>
                 </ul>
                 <br/>
             </div>
@@ -127,6 +150,10 @@
             </div>
         </div>
     </div>
+    <!--    --><?php
+    //    mysqli_free_result($result);
+    //    $conn->close();
+    //    ?>
     <!--footer-->
     <div class="footer">
         <p class="footer_txt">
