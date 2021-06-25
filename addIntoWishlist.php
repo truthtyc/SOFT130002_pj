@@ -12,5 +12,4 @@ if ($result->num_rows == 0) {
     echo "failed, you cannot add into wishlist twice";
 }
 
-mysqli_free_result($result);
 $conn->close();

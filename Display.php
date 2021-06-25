@@ -76,8 +76,6 @@
                     value="ADD INTO WISHLIST"
             />
             <?php
-            mysqli_free_result($oldRow);
-            mysqli_free_result($row);
             $conn->close();
             ?>
         </div>

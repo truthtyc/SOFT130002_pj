@@ -96,8 +96,7 @@
                     echo "<div class='search_items'>";
                     echo "<div class='search_items_img'>";
                     ?>
-                    <a href="<?php echo 'Display.php?value=' . $row['artworkID'] ?>"><img
-                                src='resources/img/<?php echo $row['imageFileName'] ?>' alt=''/></a>
+                    <a href="<?php echo 'Display.php?value=' . $row['artworkID'] ?>"><img src='resources/img/<?php echo $row['imageFileName'] ?>' alt=''/></a>
                     <?php
                     echo "</div>";
                     echo "<div class='search_items_txt'>";
