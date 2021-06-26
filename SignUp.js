@@ -6,13 +6,6 @@ function signUpCheck() {
     let tel = document.getElementById("tel").value;
     let ad = document.getElementById("address").value;
 
-
-    u = "tyc";
-    p = 'tyc123456';
-    cp = 'tyc123456';
-    em = '123@qq.com';
-    tel = '123456';
-    ad = 'shanghai';
     if (u.length === 0) {
         alert("Username should not be empty!");
         return;

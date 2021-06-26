@@ -43,8 +43,17 @@
                autocomplete="off"/>
         <input class="button_search" id="go" type="button" value="GO" onclick="searchService()"/>
         <a class="nav_bar_items" href="HomePage.php">Home</a>
-        <a class="nav_bar_items" href="SignIn.php">Sign In</a>
-        <a class="nav_bar_items" href="SignUp.php">Sign Up</a>
+        <?php
+        session_start();
+        if (isset($_SESSION['u'])) {
+            $u = $_SESSION['u'];
+            echo "<a class=\"nav_bar_items\" href=\"Collections.php?u=$u\">My Collection</a>";
+            echo "<a class=\"nav_bar_items\" href=\"SignOut.php?u=$u\">Sign Out</a>";
+        } else {
+            echo "<a class=\"nav_bar_items\" href=\"SignIn.php\">Sign In</a>";
+            echo "<a class=\"nav_bar_items\" href=\"SignUp.php\">Sign Up</a>";
+        }
+        ?>
     </div>
     <!--display-->
     <div class="display_container">
