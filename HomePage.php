@@ -24,9 +24,9 @@
         <?php
         session_start();
         if (isset($_SESSION['u'])) {
-            $u = $_SESSION['u'];
-            echo "<a class=\"nav_bar_items\" href=\"Collections.php?u=$u\">My Collection</a>";
-            echo "<a class=\"nav_bar_items\" href=\"SignOut.php?u=$u\">Sign Out</a>";
+                $u = $_SESSION['u'];
+                echo "<a class=\"nav_bar_items\" href=\"Collections.php?u=$u\">My Collection $u</a>";
+                echo "<a class=\"nav_bar_items\" href=\"SignOut.php?u=$u\">Sign Out $u</a>";
         } else {
             echo "<a class=\"nav_bar_items\" href=\"SignIn.php\">Sign In</a>";
             echo "<a class=\"nav_bar_items\" href=\"SignUp.php\">Sign Up</a>";

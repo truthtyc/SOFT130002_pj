@@ -22,14 +22,15 @@
 </head>
 <body>
 <script>
-    function addIntoWishlist(id) {
+    function addIntoWishlist(username, id) {
+        console.log(username);
         let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
                 alert(xmlhttp.responseText);
             }
         }
-        xmlhttp.open("GET", "addIntoWishlist.php?q=" + id);
+        xmlhttp.open("GET", "addIntoWishlist.php?u=" + username + "&q=" + id);
         xmlhttp.send();
     }
 </script>
@@ -47,8 +48,8 @@
         session_start();
         if (isset($_SESSION['u'])) {
             $u = $_SESSION['u'];
-            echo "<a class=\"nav_bar_items\" href=\"Collections.php?u=$u\">My Collection</a>";
-            echo "<a class=\"nav_bar_items\" href=\"SignOut.php?u=$u\">Sign Out</a>";
+            echo "<a class=\"nav_bar_items\" href=\"Collections.php?u=$u\">My Collection $u</a>";
+            echo "<a class=\"nav_bar_items\" href=\"SignOut.php?u=$u\">Sign Out $u</a>";
         } else {
             echo "<a class=\"nav_bar_items\" href=\"SignIn.php\">Sign In</a>";
             echo "<a class=\"nav_bar_items\" href=\"SignUp.php\">Sign Up</a>";
@@ -76,15 +77,19 @@
             </p>
             <p>View: <?php echo $row['view'] ?></p>
             <p>Price: <?php echo $row['price'] ?></p>
-            <input
-                    class="button_add_into_collections"
-                    id="add_into_collections"
-                    name="add_into_collections"
-                    type="button"
-                    onclick="addIntoWishlist(<?php echo $row['artworkID'] ?>)"
-                    value="ADD INTO WISHLIST"
-            />
             <?php
+            if ($u) {
+                ?>
+                <input
+                        class="button_add_into_collections"
+                        id="add_into_collections"
+                        name="add_into_collections"
+                        type="button"
+                        onclick="addIntoWishlist('<?php echo $u ?>', <?php echo $row['artworkID'] ?>)"
+                        value="ADD INTO WISHLIST"
+                />
+                <?php
+            }
             $conn->close();
             ?>
         </div>

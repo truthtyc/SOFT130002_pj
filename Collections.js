@@ -1,4 +1,4 @@
-function deleteElem(elem, id) {
+function deleteElem(elem, id, userid) {
     if (confirm("Confirm deleting?")) {
         document.getElementById(elem.id).remove();
         xmlhttp = new XMLHttpRequest();
@@ -7,7 +7,7 @@ function deleteElem(elem, id) {
                 alert(xmlhttp.responseText);
             }
         };
-        xmlhttp.open("GET", "delete.php?q=" + id);
+        xmlhttp.open("GET", "delete.php?q=" + id + "&u=" + userid);
         xmlhttp.send();
     }
 }

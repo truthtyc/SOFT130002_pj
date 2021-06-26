@@ -22,10 +22,11 @@
         <a class="nav_bar_items" href="HomePage.php">Home</a>
         <?php
         session_start();
+        $u = null;
         if (isset($_SESSION['u'])) {
             $u = $_SESSION['u'];
-            echo "<a class=\"nav_bar_items\" href=\"Collections.php?u=$u\">My Collection</a>";
-            echo "<a class=\"nav_bar_items\" href=\"SignOut.php?u=$u\">Sign Out</a>";
+            echo "<a class=\"nav_bar_items\" href=\"Collections.php?u=$u\">My Collection $u</a>";
+            echo "<a class=\"nav_bar_items\" href=\"SignOut.php?u=$u\">Sign Out $u</a>";
         } else {
             echo "<a class=\"nav_bar_items\" href=\"SignIn.php\">Sign In</a>";
             echo "<a class=\"nav_bar_items\" href=\"SignUp.php\">Sign Up</a>";
@@ -41,7 +42,7 @@
                 <?php
                 require("DatabaseConfig.php");
                 $conn = connectDatabase();
-                $sql = "select * from users";
+                $sql = "select * from users where name = '$u'";
                 $row = $conn->query($sql)->fetch_assoc();
                 echo "<h4 class='info'>Name: {$row['name']}</h4>";
                 echo "<h4 class='info'>E-mail: {$row['email']}</h4>";
@@ -52,7 +53,7 @@
         </div>
         <div id="collection_col">
             <?php
-            $sql = "select * from wishlist where userID = 1";
+            $sql = "select * from wishlist where userID = " . $row['userID'];
             $result = $conn->query($sql);
             for ($i = 0; $i < $result->num_rows; $i++) {
                 $row = $result->fetch_assoc();
@@ -71,7 +72,7 @@
                     </div>
                     <div class='collection_del'>
                         <input type='button' id="delete_button" name='delete' class='delete'
-                               onclick='deleteElem(this.parentNode.parentNode, <?php echo $artRow['artworkID'] ?>)'
+                               onclick='deleteElem(this.parentNode.parentNode, <?php echo $artRow['artworkID'] ?>, <?php echo $row['userID'] ?>)'
                                value='DELETE'/>
                     </div>
                 </div>

@@ -9,8 +9,8 @@
     <?php
     require "DatabaseConfig.php";
     $conn = connectDatabase();
-    $search = $_GET['search'];
-    $sort = $_GET['sort'];
+    $search = $_GET['search'] ?? '';
+    $sort = $_GET['sort'] ?? '';
     if ($search == "")
         $sql = "select * from artworks";
     else
@@ -29,12 +29,10 @@
     } else if ($sort == 'sortByPrice') {
         $sql = $sql .
             " order by price desc";
-        echo $sql;
         $result = $conn->query($sql);
     } else if ($sort == 'sortByView') {
         $sql = $sql .
             " order by view desc";
-        echo $sql;
         $result = $conn->query($sql);
     }
 
@@ -58,7 +56,6 @@
     $nextPage = ($totalPage - $currentPage > 0) ? $currentPage + 1 : $totalPage;
 
     $pageSql = $sql . ' limit ' . $mark . ' , ' . $pageSize;
-    echo $pageSql;
     $result = $conn->query($pageSql)
 
     ?>
@@ -78,8 +75,8 @@
         session_start();
         if (isset($_SESSION['u'])) {
             $u = $_SESSION['u'];
-            echo "<a class=\"nav_bar_items\" href=\"Collections.php?u=$u\">My Collection</a>";
-            echo "<a class=\"nav_bar_items\" href=\"SignOut.php?u=$u\">Sign Out</a>";
+            echo "<a class=\"nav_bar_items\" href=\"Collections.php?u=$u\">My Collection $u</a>";
+            echo "<a class=\"nav_bar_items\" href=\"SignOut.php?u=$u\">Sign Out $u</a>";
         } else {
             echo "<a class=\"nav_bar_items\" href=\"SignIn.php\">Sign In</a>";
             echo "<a class=\"nav_bar_items\" href=\"SignUp.php\">Sign Up</a>";

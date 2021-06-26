@@ -1,13 +1,13 @@
 <?php
-require "DatabaseConfig.php";
 session_start();
-$u = $_POST["u"] ?? "";
-$p = $_POST["p"] ?? "";
+require "DatabaseConfig.php";
+$u = $_GET["u"];
+$p = $_GET["p"];
 
 $conn = connectDatabase();
 $sql = "select * from users where name = '$u' and password='$p'";
 $result = $conn->query($sql);
-if (!$result) {
+if ($result->num_rows == 0) {
     echo "Wrong password or wrong username";
 } else {
     $_SESSION["u"] = $u;

@@ -20,7 +20,6 @@
         <input class="button_search" id="go" type="button" value="GO" onclick="searchService()"/>
         <a class="nav_bar_items" href="HomePage.php">Home</a>
         <?php
-        session_start();
         if (isset($_SESSION['u'])) {
             $u = $_SESSION['u'];
             echo "<a class=\"nav_bar_items\" href=\"Collections.php?u=$u\">My Collection</a>";
